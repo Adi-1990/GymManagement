@@ -1,16 +1,10 @@
 package com;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import com.business.workingTested.TrainerPlanForADate;
-import com.business.workingTested.WichtTrainersAreWorkingAtDate;
-import com.business.workingTested.WichtTrainersAreWorkingAtDateAndTime;
-import com.business.workingTested.WichtTrainersAreWorkingAtIntervalOfDates;
-import com.business.workingTested.WichtTrainersAreWorkingAtIntervalOfDatesAndHours;
 import com.model.impl.ExercisePlan;
-import com.model.impl.Trainer;
 
 public class Main2 {
 
@@ -35,14 +29,23 @@ public class Main2 {
 //		
 //		System.out.println("||");
 //		
-//		TrainerPlanForADate trainersAvailableAtDate = new TrainerPlanForADate();
-//		LocalDate dateToCheck = LocalDate.parse("2019-05-05");
+//		LocalDate startDate = LocalDate.parse("2019-05-05");
+//		LocalDate endDate = LocalDate.parse("2019-05-08");	
+//		int trainerIdToCheck = 1;
 //		
-//		List<ExercisePlan> trainerWorkingPlanAtADay = trainersAvailableAtDate.getTrainerWorkingPlanAtADay(dateToCheck, 3);
-//		
+//		TrainerPlanForAnIntervalOfDates trainersAvailableAtDate = new TrainerPlanForAnIntervalOfDates();
+//
+//		List<ExercisePlan> trainerWorkingPlanAtADay = trainersAvailableAtDate.getTrainerPlanForAnIntervalOfDates(startDate, endDate, trainerIdToCheck);
+//
+//		System.out.println(
+//				"Between dates " + startDate + " and " + endDate + " trainer with ID no " + trainerIdToCheck + " has the next classes: ");
+//
 //		for (ExercisePlan e : trainerWorkingPlanAtADay) {
-//			System.out.println("For date " + dateToCheck + " trainer with ID no " + e.getTrainerId() + " is available! ");
+//			System.out.println("Class ID: " + e.getClassesId() + " Plan ID: " + e.getPlanId() + " start hour: "
+//					+ e.getStartClass() + " duration of class: " + e.getTime());
 //		}
+		
+//		System.out.println("||");
 
 //		LocalDate startDate = LocalDate.parse("2019-05-10");
 //		LocalDate endDate = LocalDate.parse("2019-05-20");
@@ -55,27 +58,54 @@ public class Main2 {
 //		}
 //		System.out.println("||");
 
-		LocalDate startDate = LocalDate.parse("2019-05-04");
-		LocalDate endDate = LocalDate.parse("2019-05-06");
-		LocalTime startTime = LocalTime.parse("07:00");
-		LocalTime endTime = LocalTime.parse("13:00");
-
-		WichtTrainersAreWorkingAtIntervalOfDatesAndHours getAvailableTrainersAtIntervalOfDates = new WichtTrainersAreWorkingAtIntervalOfDatesAndHours();
-		List<Trainer> availableTrainersAIntervalOftDates = getAvailableTrainersAtIntervalOfDates
-				.getAvailableTrainersAtIntervatOfDatesAndHours(startDate, endDate, startTime, endTime);
-
-		for (Trainer e : availableTrainersAIntervalOftDates) {
-			System.err.println(e.getTrainerId() + " " + e.getName());
-		}
+//		LocalDate startDate = LocalDate.parse("2019-05-04");
+//		LocalDate endDate = LocalDate.parse("2019-05-06");
+//		LocalTime startTime = LocalTime.parse("07:00");
+//		LocalTime endTime = LocalTime.parse("13:00");
+//
+//		WichtTrainersAreWorkingAtIntervalOfDatesAndHours getAvailableTrainersAtIntervalOfDates = new WichtTrainersAreWorkingAtIntervalOfDatesAndHours();
+//		List<Trainer> availableTrainersAIntervalOftDates = getAvailableTrainersAtIntervalOfDates
+//				.getAvailableTrainersAtIntervatOfDatesAndHours(startDate, endDate, startTime, endTime);
+//
+//		for (Trainer e : availableTrainersAIntervalOftDates) {
+//			System.err.println(e.getTrainerId() + " " + e.getName());
+//		}
 //		System.out.println("||");
 
+		LocalDate day = LocalDate.parse("2019-05-08");
+		int trainerIdToCheck = 1;
+		
+		TrainerPlanForADate trainersAvailableAtDate = new TrainerPlanForADate();
+
+		List<ExercisePlan> trainerWorkingPlanAtADay = trainersAvailableAtDate.getTrainerPlanForADate(day, trainerIdToCheck);
+
+		System.out.println(
+				"For date " + day + " trainer with ID no " + trainerIdToCheck + " has the next classes: ");
+
+		for (ExercisePlan e : trainerWorkingPlanAtADay) {
+			System.out.println("Class ID: " + e.getClassesId() + " Plan ID: " + e.getPlanId() + " start hour: "
+					+ e.getStartClass() + " duration of class: " + e.getTime());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
 
 // List all trainers working at specified date
 // List all trainers working at specified date and hour
-//List the program for a trainer for a date
+// List the program for a trainer for a date
 // List all trainers working at specified interval of dates
-
 // List all trainers working at specified interval of dates and hours
+
 // List the program for a trainer for an interval of dates

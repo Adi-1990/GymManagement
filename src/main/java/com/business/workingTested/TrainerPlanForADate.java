@@ -13,10 +13,9 @@ import com.model.impl.Equipment;
 import com.model.impl.ExercisePlan;
 import com.model.impl.Trainer;
 
-public class TrainerPlanForAnIntervalOfDates {
+public class TrainerPlanForADate {
 
-	public List<ExercisePlan> getTrainerPlanForAnIntervalOfDates(LocalDate startDate, LocalDate endDate,
-			int trainerId) {
+	public List<ExercisePlan> getTrainerPlanForADate(LocalDate day, int trainerId) {
 
 		TrainersDAO loadTrainers = new TrainersDAO();
 		List<Trainer> loadedTrainers = loadTrainers.loadTrainers("./trainers.txt");
@@ -28,8 +27,7 @@ public class TrainerPlanForAnIntervalOfDates {
 		List<ExercisePlan> loadedExercisePlans = loadExercisePlans.loadExercisePLans("./exercisePlans.txt",
 				loadedTrainers, loadedEquipments);
 
-		List<ExercisePlan> exercisesPlan = getAvailableTrainersAtIntervalOfDates(startDate, endDate, trainerId,
-				loadedExercisePlans);
+		List<ExercisePlan> exercisesPlan = getAvailableTrainersAtDate(day, trainerId, loadedExercisePlans);
 
 		// remove duplicates from an ArrayList
 
@@ -46,7 +44,7 @@ public class TrainerPlanForAnIntervalOfDates {
 		return exercisesPlan;
 	}
 
-	private List<ExercisePlan> getAvailableTrainersAtIntervalOfDates(LocalDate startDate, LocalDate endDate, int trainerId,
+	private List<ExercisePlan> getAvailableTrainersAtDate(LocalDate day, int trainerId,
 			List<ExercisePlan> loadedExercisePlans) {
 
 		List<ExercisePlan> exercisesPlan = new ArrayList<ExercisePlan>();
@@ -54,8 +52,7 @@ public class TrainerPlanForAnIntervalOfDates {
 		for (ExercisePlan ex : loadedExercisePlans) {
 //			if (((startDate.isAfter(ex.getDay())) && (endDate.isAfter(ex.getDay())))) {
 
-			if ((startDate.isBefore(ex.getDay()) || startDate.isEqual(ex.getDay()))
-					&& ((endDate.isAfter(ex.getDay())) || (endDate.isEqual(ex.getDay())))) {
+			if ((day.isEqual(ex.getDay())) && ((day.isEqual(ex.getDay())))) {
 
 				if (trainerId == ex.getTrainerId()) {
 					int planId = ex.getPlanId();

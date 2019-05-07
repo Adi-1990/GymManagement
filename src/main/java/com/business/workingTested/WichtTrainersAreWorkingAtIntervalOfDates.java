@@ -47,10 +47,7 @@ public class WichtTrainersAreWorkingAtIntervalOfDates {
 		List<Trainer> trainers = new ArrayList<Trainer>();
 
 		for (TrainerSchedule sc : loadedTrainerSchedule) {
-			if ((startDate.isBefore(sc.getDay()) || startDate.isEqual(sc.getDay())) && ((endDate.isAfter(sc.getDay())) || (endDate.isEqual(sc.getDay())))) {
-				
-		
-				
+			if ((startDate.isBefore(sc.getDay()) || startDate.isEqual(sc.getDay())) && ((endDate.isAfter(sc.getDay())) || (endDate.isEqual(sc.getDay())))) {		
 				int trainerId = sc.getTrainerId();
 				Trainer trainer = findTrainerById(trainerId, loadedTrainers);
 				trainers.add(trainer);
