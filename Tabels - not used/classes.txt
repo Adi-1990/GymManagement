@@ -1,0 +1,1 @@
+int classId		int trainerId		LocalDate day		LocalTime startClass		LocalTime endClass		int MaxNoOfParticipants

@@ -1,0 +1,1 @@
+int subscriptionToClassID	int customerId	int trainerId int classesId int equipmentId

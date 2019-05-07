@@ -1,0 +1,1 @@
+int subcriptionId		int customerId		LocalDate startDate		LocalDate period	String typeOfSubscription		double price
